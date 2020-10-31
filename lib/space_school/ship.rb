@@ -8,4 +8,8 @@ class Ship
   def right
     @current_position[0] += 1
   end
+
+  def left
+    @current_position[0] -= 1
+  end
 end
