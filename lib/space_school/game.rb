@@ -1,6 +1,7 @@
 # La librería utils maneja el control de input del usuario.
 # Esto permite que la captura del input no detenga el juego mientras espera respuesta.
 require_relative 'utils'
+require_relative 'movements'
 
 class Game
   def self.start

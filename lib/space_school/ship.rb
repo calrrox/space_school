@@ -1,15 +1,12 @@
-class Ship
-  attr_reader :current_position
+module SpaceSchool
+  class Ship
+    attr_reader :position
+    include Movements
 
-  def initialize
-    @current_position = [5, 0] # x, y
-  end
+    def initialize
+      @position = [10, 5] # y, x
+    end
 
-  def right
-    @current_position[0] += 1
-  end
-
-  def left
-    @current_position[0] -= 1
+    # protected
   end
 end
