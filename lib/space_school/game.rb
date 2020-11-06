@@ -2,6 +2,8 @@
 # Esto permite que la captura del input no detenga el juego mientras espera respuesta.
 require_relative 'utils'
 require_relative 'movements'
+require_relative 'radar'
+require_relative 'ship'
 
 class Game
   def self.start
@@ -12,6 +14,8 @@ class Game
   def initialize
     @frames = 0
     @fps = 10 # cantidad de frames por segundo
+    @radar = Radar.new
+    @ship = SpaceSchool::Ship.new
   end
 
   def update
@@ -19,7 +23,7 @@ class Game
       @frames += 1 # Cantidad de frame desde que el juego comenzó (puede ser útil... o ¡no!)
       draw
       handle_input # manejo de la la entrada del jugador
-      sleep 1.0 / @fps # tiempo de refrescamiento
+      sleep 5.0 / @fps # tiempo de refrescamiento
     end
   end
 
@@ -28,8 +32,10 @@ class Game
     case key
     when 'a'
       # mover nave a la izquierda :left
+      @ship.left
     when 'd'
       # mover nave a la derecha
+      @ship.right
     when 'x'
       game_over
     end
@@ -44,6 +50,7 @@ class Game
   def draw
     system 'clear'
     puts "Frames: #{@frames}"
+    @radar.show
     show_menu
   end
 

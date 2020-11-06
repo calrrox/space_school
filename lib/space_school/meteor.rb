@@ -8,6 +8,10 @@ module SpaceSchool
       @position << random_x
     end
 
+    def show
+      " ** "
+    end
+
     private
 
     def random_x
